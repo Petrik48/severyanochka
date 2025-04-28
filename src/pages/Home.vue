@@ -20,18 +20,18 @@ import { Typography } from '../shared/typography'
         <Typography tag="p" size="xl" bold> test </Typography>
       </div>
       <div class="flex flex-col gap-2 justify-between">
-        <Typography tag="h1" size="xs"> test </Typography>
-        <Typography tag="h2" size="s"> test </Typography>
-        <Typography tag="h3" size="m"> test </Typography>
-        <Typography tag="h4" size="l"> test </Typography>
-        <Typography tag="h5" size="xl"> test </Typography>
+        <Typography tag="h1"> test </Typography>
+        <Typography tag="h2"> test </Typography>
+        <Typography tag="h3"> test </Typography>
+        <Typography tag="h4"> test </Typography>
+        <Typography tag="h5"> test </Typography>
       </div>
       <div class="flex flex-col gap-2 justify-between">
-        <Typography tag="h1" size="xs" bold> test </Typography>
-        <Typography tag="h2" size="s" bold> test </Typography>
-        <Typography tag="h3" size="m" bold> test </Typography>
-        <Typography tag="h4" size="l" bold> test </Typography>
-        <Typography tag="h5" size="xl" bold> test </Typography>
+        <Typography tag="h1" bold> test </Typography>
+        <Typography tag="h2" bold> test </Typography>
+        <Typography tag="h3" bold> test </Typography>
+        <Typography tag="h4" bold> test </Typography>
+        <Typography tag="h5" bold> test </Typography>
       </div>
     </div>
   </main>
