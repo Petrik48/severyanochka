@@ -1,5 +1,6 @@
 <script lang="ts" setup>
 import type { Component } from 'vue'
+
 import MenuIcon from '@/shared/icon/icons/MenuIcon.vue'
 
 interface Props {
