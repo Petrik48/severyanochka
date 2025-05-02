@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 interface Props {
-  tag: 'p' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'
+  tag: 'span' | 'p' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'
   size?: 'xs' | 's' | 'm' | 'l' | 'xl'
   bold?: boolean
 }
@@ -12,6 +12,7 @@ const { tag, size, bold } = defineProps<Props>()
   <component
     :is="tag"
     :class="['typography', size ? `typography--${size}` : '', `${bold ? 'typography--bold ' : ''}`]"
+    class="typography font-normal leading-[150%] text-(--main-onsurface)"
   >
     <slot></slot>
   </component>
@@ -19,10 +20,6 @@ const { tag, size, bold } = defineProps<Props>()
 
 <style lang="scss" scoped>
 .typography {
-  font-weight: 400;
-  line-height: 150%;
-  color: var(--main-onsurface);
-
   &--xs {
     font-size: 12px;
   }

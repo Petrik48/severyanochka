@@ -3,6 +3,11 @@ import { Container } from '@/shared/container'
 import { Logo } from '@/shared/logo'
 import { Icon } from '@/shared/icon'
 import { Button } from '@/shared/button'
+import { Field } from '@/shared/field'
+
+import { ref } from 'vue'
+
+const model = ref()
 </script>
 
 <template>
@@ -18,7 +23,9 @@ import { Button } from '@/shared/button'
           </template>
           Каталог
         </Button>
+        <Field placeholder="Найти товар" width="375" v-model="model"> </Field>
       </div>
+      <div></div>
     </Container>
   </header>
 </template>
