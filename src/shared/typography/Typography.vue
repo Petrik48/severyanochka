@@ -12,7 +12,7 @@ const { tag, size, bold } = defineProps<Props>()
   <component
     :is="tag"
     :class="['typography', size ? `typography--${size}` : '', `${bold ? 'typography--bold ' : ''}`]"
-    class="typography font-normal leading-[150%] text-(--main-onsurface)"
+    class="typography font-normal leading-[150%] text-(--main-on-surface)"
   >
     <slot></slot>
   </component>

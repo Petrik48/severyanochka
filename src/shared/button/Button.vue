@@ -59,8 +59,12 @@ const {
   }
 
   &--secondary {
-    color: var(--main-on-primary);
     background: var(--main-secondary);
+    color: var(--main-on-primary);
+
+    & p {
+      color: var(--main-on-primary);
+    }
   }
 }
 </style>

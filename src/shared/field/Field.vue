@@ -8,9 +8,17 @@ interface Props {
   placeholder?: string
   height?: number | string
   width?: number | string
+  borderColor?: string
 }
 
-const { label = '', disabled = false, size = 'm', placeholder = '', width } = defineProps<Props>()
+const {
+  label = '',
+  disabled = false,
+  size = 'm',
+  placeholder = '',
+  width,
+  borderColor = '--grayscale-light',
+} = defineProps<Props>()
 const model = defineModel()
 
 const onFocus = ref(false)
@@ -26,20 +34,23 @@ const onFocus = ref(false)
       {{ label }}
     </span>
     <div
-      class="field__container flex items-center border border-solid border-(--grayscale-light) rounded-sm py-2 px-4 gap-[8.5px]"
-      :class="{
-        'py-3': size === 'l',
-        'border-(--main-secondary) shadow-(--shadow-secondary-m)': onFocus,
-        'bg-(--grayscale-lightest)': disabled,
-        'bg-(--main-onprimary)': !disabled,
-      }"
+      class="field__container flex border-(--main-on-surface) items-center border border-solid rounded-sm py-2 px-4 gap-[8.5px]"
+      :class="[
+        `border-(${borderColor})`,
+        {
+          'py-3': size === 'l',
+          'border-(--main-secondary) shadow-(--shadow-secondary-m)': onFocus,
+          'bg-(--grayscale-lightest)': disabled,
+          'bg-(--main-onprimary)': !disabled,
+        },
+      ]"
     >
       <slot name="leftIcon"></slot>
       <input
         v-model="model"
-        class="field__input flex text-base font-normal placeholder:text-base placeholder:font-normal caret-(--main-secondary)"
+        class="field__input flex-auto text-base font-normal placeholder:text-base placeholder:font-normal caret-(--main-secondary)"
         :class="{
-          'text-(--main-onsurface) placeholder:text-(--main-onsurface)': !disabled,
+          'text-(--main-on-surface) placeholder:text-(--main-on-surface)': !disabled,
           'text-[18px] placeholder:text-[18px]': size === 'l',
           'text-(--grayscale-light) placeholder:text-(--grayscale-light)': disabled,
         }"

@@ -5,9 +5,23 @@ import { Icon } from '@/shared/icon'
 import { Button } from '@/shared/button'
 import { Field } from '@/shared/field'
 
-import { ref } from 'vue'
+import { reactive, ref } from 'vue'
+import Navigation from '@/features/header/navigation/Navigation.vue'
+import { UserMenu } from '@/features/header/UserMenu'
+
+import avatar from '@/assets/avatar.png'
 
 const model = ref()
+const navItems = reactive([
+  { label: 'Избранное', icon: 'favorite', count: 1, link: '/favorite' },
+  { label: 'Заказы', icon: 'orders', count: 0, link: '/orders' },
+  { label: 'Корзина', icon: 'cart', count: 2, link: '/cart' },
+])
+const userMenu = reactive({
+  avatar: avatar,
+  name: 'Алексей',
+  menu: [],
+})
 </script>
 
 <template>
@@ -23,9 +37,21 @@ const model = ref()
           </template>
           Каталог
         </Button>
-        <Field placeholder="Найти товар" width="375" v-model="model"> </Field>
+        <Field
+          placeholder="Найти товар"
+          width="375"
+          v-model="model"
+          border-color="--main-secondary"
+        >
+          <template #rightIcon>
+            <Icon icon="search" />
+          </template>
+        </Field>
       </div>
-      <div></div>
+      <div class="flex items-center gap-6 flex-auto">
+        <Navigation :data="navItems" />
+        <UserMenu :data="userMenu" />
+      </div>
     </Container>
   </header>
 </template>
