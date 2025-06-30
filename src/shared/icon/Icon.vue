@@ -7,6 +7,7 @@ import FavoriteIcon from '@/shared/icon/icons/FavoriteIcon.vue'
 import OrdersIcon from '@/shared/icon/icons/OrdersIcon.vue'
 import CartIcon from '@/shared/icon/icons/CartIcon.vue'
 import ChevronDownIcon from '@/shared/icon/icons/ChevronDownIcon.vue'
+import LoginIcon from '@/shared/icon/icons/LoginIcon.vue'
 
 interface Props {
   icon: string
@@ -20,6 +21,7 @@ const icons: { [index: string]: Component } = {
   orders: OrdersIcon,
   cart: CartIcon,
   'chevron-down': ChevronDownIcon,
+  login: LoginIcon,
 }
 const { icon, size = 24 } = defineProps<Props>()
 const iconComponent = icons[icon]

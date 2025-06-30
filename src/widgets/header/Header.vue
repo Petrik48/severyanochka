@@ -1,15 +1,22 @@
 <script setup lang="ts">
+import { reactive, ref, computed } from 'vue'
+
 import { Container } from '@/shared/container'
 import { Logo } from '@/shared/logo'
 import { Icon } from '@/shared/icon'
 import { Button } from '@/shared/button'
 import { Field } from '@/shared/field'
-
-import { reactive, ref } from 'vue'
 import Navigation from '@/features/header/navigation/Navigation.vue'
+
 import { UserMenu } from '@/features/header/UserMenu'
 
 import avatar from '@/assets/avatar.png'
+import { usePersonStore } from '@/entities/person'
+
+const personState = usePersonStore()
+
+const personName = computed(() => personState.person.name)
+const personIsAuth = computed(() => personState.person.isAuth)
 
 const model = ref()
 const navItems = reactive([
@@ -19,8 +26,11 @@ const navItems = reactive([
 ])
 const userMenu = reactive({
   avatar: avatar,
-  name: 'Алексей',
-  menu: [],
+  name: personName.value,
+  menu: [
+    { label: 'Профиль', link: '/profile' },
+    { label: 'Выйти', action: () => console.log('logout') },
+  ],
 })
 </script>
 
@@ -50,7 +60,13 @@ const userMenu = reactive({
       </div>
       <div class="flex items-center gap-6 flex-auto">
         <Navigation :data="navItems" />
-        <UserMenu :data="userMenu" />
+        <UserMenu v-if="personIsAuth" :data="userMenu" />
+        <Button v-else width="157">
+          Войти
+          <template #rightIcon>
+            <Icon icon="login" />
+          </template>
+        </Button>
       </div>
     </Container>
   </header>
