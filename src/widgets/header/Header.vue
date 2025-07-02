@@ -12,11 +12,11 @@ import { UserMenu } from '@/features/header/UserMenu'
 
 import avatar from '@/assets/avatar.png'
 import { usePersonStore } from '@/entities/person'
+import { storeToRefs } from 'pinia'
 
 const personState = usePersonStore()
-
-const personName = computed(() => personState.person.name)
-const personIsAuth = computed(() => personState.person.isAuth)
+const { person, isAuth } = storeToRefs(personState)
+const { setIsAuth } = personState
 
 const model = ref()
 const navItems = reactive([
@@ -26,10 +26,10 @@ const navItems = reactive([
 ])
 const userMenu = reactive({
   avatar: avatar,
-  name: personName.value,
+  name: person.value.name,
   menu: [
     { label: 'Профиль', link: '/profile' },
-    { label: 'Выйти', action: () => console.log('logout') },
+    { label: 'Выйти', action: () => setIsAuth(false) },
   ],
 })
 </script>
@@ -60,8 +60,8 @@ const userMenu = reactive({
       </div>
       <div class="flex items-center gap-6 flex-auto">
         <Navigation :data="navItems" />
-        <UserMenu v-if="personIsAuth" :data="userMenu" />
-        <Button v-else width="157">
+        <UserMenu v-if="isAuth" :data="userMenu" />
+        <Button v-else width="157" @click="setIsAuth(true)">
           Войти
           <template #rightIcon>
             <Icon icon="login" />

@@ -7,7 +7,9 @@ export const usePersonStore = defineStore('person', () => {
     name: 'Алексей',
   })
 
-  const setIsAuth = () => (isAuth.value = true)
+  const setIsAuth = (value: boolean): void => {
+    isAuth.value = value
+  }
 
-  return { isAuth, person }
+  return { isAuth, person, setIsAuth }
 })
