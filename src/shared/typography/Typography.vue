@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 interface Props {
-  tag: 'span' | 'p' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'
+  tag: 'span' | 'p' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'li'
   size?: 'xs' | 's' | 'm' | 'l' | 'xl'
   bold?: boolean
 }

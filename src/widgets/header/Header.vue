@@ -13,6 +13,7 @@ import { UserMenu } from '@/features/header/UserMenu'
 import avatar from '@/assets/avatar.png'
 import { usePersonStore } from '@/entities/person'
 import { storeToRefs } from 'pinia'
+import { DropdownMenu } from '@/features/header/dropdown-menu'
 
 const personState = usePersonStore()
 const { person, isAuth } = storeToRefs(personState)
@@ -24,6 +25,7 @@ const navItems = reactive([
   { label: 'Заказы', icon: 'orders', count: 0, link: '/orders' },
   { label: 'Корзина', icon: 'cart', count: 2, link: '/cart' },
 ])
+
 const userMenu = reactive({
   avatar: avatar,
   name: person.value.name,
@@ -32,21 +34,26 @@ const userMenu = reactive({
     { label: 'Выйти', action: () => setIsAuth(false) },
   ],
 })
+
+const isShowDropdownMenu = ref(false)
 </script>
 
 <template>
   <header
-    class="flex items-center header h-18 bg-(--main-surface) shadow-(--shadow-default-s) sticky"
+    class="flex items-center header h-18 bg-(--main-surface) shadow-(--shadow-default-s) sticky relative"
   >
     <Container class="flex items-center gap-10">
       <Logo orientation="horizontal" height="32" width="152" />
       <div class="flex items-center gap-4">
-        <Button accent="secondary" width="140">
-          <template #leftIcon>
-            <Icon icon="menu" />
-          </template>
-          Каталог
-        </Button>
+        <div @mouseenter="isShowDropdownMenu = true" @mouseleave="isShowDropdownMenu = false">
+          <Button accent="secondary" width="140">
+            <template #leftIcon>
+              <Icon icon="menu" />
+            </template>
+            Каталог
+          </Button>
+          <DropdownMenu v-if="isShowDropdownMenu" />
+        </div>
         <Field
           placeholder="Найти товар"
           width="375"
@@ -71,5 +78,3 @@ const userMenu = reactive({
     </Container>
   </header>
 </template>
-
-<style lang="scss" scoped></style>
