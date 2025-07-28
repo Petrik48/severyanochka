@@ -41,3 +41,18 @@
   --shadow-secondary-l: 8px 16px 32px 0px rgba(112, 192, 91, 0.20);
   --shadow-secondary-xl: 16px 32px 64px 0px rgba(112, 192, 91, 0.20);
 }
+
+
+@theme {
+  --animate-slidedown: slideDown .3s forwards 1;
+  @keyframes slideDown {
+    from {
+      top: 0;
+      opacity: 0;
+    }
+    to {
+      top: 100%;
+      opacity: 1;
+    }
+  }
+}

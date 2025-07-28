@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { reactive, ref, computed } from 'vue'
+import { reactive, ref } from 'vue'
 
 import { Container } from '@/shared/container'
 import { Logo } from '@/shared/logo'
@@ -11,7 +11,7 @@ import Navigation from '@/features/header/navigation/Navigation.vue'
 import { UserMenu } from '@/features/header/UserMenu'
 
 import avatar from '@/assets/avatar.png'
-import { usePersonStore } from '@/entities/person'
+import { usePersonStore } from '@/entities'
 import { storeToRefs } from 'pinia'
 import { DropdownMenu } from '@/features/header/dropdown-menu'
 
@@ -42,17 +42,16 @@ const isShowDropdownMenu = ref(false)
   <header
     class="flex items-center header h-18 bg-(--main-surface) shadow-(--shadow-default-s) sticky relative"
   >
-    <Container class="flex items-center gap-10">
+    <Container class="flex items-center gap-10 h-full bg-(--main-surface)">
       <Logo orientation="horizontal" height="32" width="152" />
       <div class="flex items-center gap-4">
-        <div @mouseenter="isShowDropdownMenu = true" @mouseleave="isShowDropdownMenu = false">
+        <div @mouseenter="isShowDropdownMenu = true">
           <Button accent="secondary" width="140">
             <template #leftIcon>
               <Icon icon="menu" />
             </template>
             Каталог
           </Button>
-          <DropdownMenu v-if="isShowDropdownMenu" />
         </div>
         <Field
           placeholder="Найти товар"
@@ -75,6 +74,7 @@ const isShowDropdownMenu = ref(false)
           </template>
         </Button>
       </div>
+      <DropdownMenu v-if="isShowDropdownMenu" @mouseleave="isShowDropdownMenu = false" />
     </Container>
   </header>
 </template>

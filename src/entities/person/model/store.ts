@@ -1,9 +1,10 @@
 import { ref, reactive } from 'vue'
 import { defineStore } from 'pinia'
+import { type Person } from './types.ts'
 
 export const usePersonStore = defineStore('person', () => {
-  const isAuth = ref(false)
-  const person = reactive({
+  const isAuth = ref<boolean>(false)
+  const person = reactive<Person>({
     name: 'Алексей',
   })
 
