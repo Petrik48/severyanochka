@@ -23,21 +23,25 @@ const socials = reactive([
 </script>
 
 <template>
-  <footer class="px-4 py-8 bg-(--main-footer)">
+  <footer class="px-4 py-8 bg-(--main-footer) bg-[url(footer-bg-pattern.png)]">
     <Container class="flex items-center gap-10">
       <div class="flex items-center gap-10">
         <Logo width="64" height="44" />
         <RouterLink :to="link.href" v-for="link in links" :key="link.label">
-          <Typography tag="span">
+          <Typography tag="span" size="xs">
             {{ link.label }}
           </Typography>
         </RouterLink>
       </div>
       <div class="flex gap-4 ml-auto">
-        <RouterLink v-for="social in socials" :key="social.icon" :href="social.href">
+        <RouterLink v-for="social in socials" :key="social.icon" :to="social.href">
           <Icon :icon="social.icon" />
         </RouterLink>
       </div>
+      <a href="tel:+88007773333" class="flex gap-2">
+        <Icon icon="phone" />
+        <Typography tag="span" size="s" class="whitespace-nowrap">8 800 777 33 33</Typography>
+      </a>
     </Container>
   </footer>
 </template>
