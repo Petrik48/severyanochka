@@ -4,7 +4,7 @@ WORKDIR /app
 
 RUN apk update \
   && apk add git \
-  && git clone git@github.com:Petrik48/severyanochka.git . \
+  && git clone https://github.com/Petrik48/severyanochka.git . \
   && git pull
 
 COPY package*.json ./
