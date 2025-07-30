@@ -9,7 +9,7 @@ import { Container } from '@/shared/container'
   <main>
     <Header />
     <Content>
-      <Container> Test </Container>
+      <Container> Test 2 </Container>
     </Content>
     <Footer />
   </main>
