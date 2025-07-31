@@ -4,18 +4,28 @@ on:
     branches:
       - main
 jobs:
-  build-only:
-    runs-on: self-hosted
+  checkout:
+    runs-on: severyanochka-label
     steps:
       - name: Checkout
         uses: actions/checkout@v3
       - name: Install deps
         run: npm install
-      - name: Build only
-        run: npm run build-only
+  unit-test:
+    needs: [checkout]
+    runs-on: severyanochka-label
+    steps:
+      - name: Run unit tests
+        run: npm run test:unit
+  type-check:
+    needs: [unit-test]
+    runs-on: severyanochka-label
+    steps:
+      - name: Run type check
+        run: npm run type-check
   deploy:
-    needs: [build-only]
-    runs-on: self-hosted
+    needs: [type-check]
+    runs-on: severyanochka-label
     steps:
       - name: Clear cache
         run: docker builder prune -a

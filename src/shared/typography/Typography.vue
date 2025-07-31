@@ -20,6 +20,22 @@ const { tag, size, bold } = defineProps<Props>()
 
 <style lang="scss" scoped>
 .typography {
+  &:is(h5, h6) {
+    font-size: 18px;
+  }
+  &:is(h4) {
+    font-size: 24px;
+  }
+  &:is(h3) {
+    font-size: 36px;
+  }
+  &:is(h2) {
+    font-size: 48px;
+  }
+  &:is(h1) {
+    font-size: 64px;
+  }
+
   &--xs {
     font-size: 12px;
   }
@@ -38,56 +54,6 @@ const { tag, size, bold } = defineProps<Props>()
 
   &--bold {
     font-weight: bold;
-  }
-
-  &:is(h1) {
-    font-size: 18px;
-  }
-  &:is(h2) {
-    font-size: 24px;
-  }
-  &:is(h3) {
-    font-size: 36px;
-  }
-  &:is(h4) {
-    font-size: 48px;
-  }
-  &:is(h5) {
-    font-size: 64px;
-  }
-
-  @media screen and (max-width: 768px) {
-    &--xs {
-      font-size: 8px;
-    }
-    &--s {
-      font-size: 12px;
-    }
-    &--m {
-      font-size: 14px;
-    }
-    &--l {
-      font-size: 20px;
-    }
-    &--xl {
-      font-size: 32px;
-    }
-
-    &:is(h1) {
-      font-size: 16px;
-    }
-    &:is(h2) {
-      font-size: 20px;
-    }
-    &:is(h3) {
-      font-size: 24px;
-    }
-    &:is(h4) {
-      font-size: 36px;
-    }
-    &:is(h5) {
-      font-size: 48px;
-    }
   }
 }
 </style>

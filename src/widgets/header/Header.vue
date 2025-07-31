@@ -8,7 +8,7 @@ import { Button } from '@/shared/button'
 import { Field } from '@/shared/field'
 import Navigation from '@/features/header/navigation/Navigation.vue'
 
-import { UserMenu } from '@/features/header/UserMenu'
+import { UserMenu } from '@/features/header/user-menu'
 
 import avatar from '@/assets/avatar.png'
 import { usePersonStore } from '@/entities'
@@ -39,42 +39,42 @@ const isShowDropdownMenu = ref(false)
 </script>
 
 <template>
-  <header
-    class="flex items-center header h-18 bg-(--main-surface) shadow-(--shadow-default-s) sticky relative"
-  >
-    <Container class="flex items-center gap-10 h-full bg-(--main-surface)">
-      <Logo orientation="horizontal" height="32" width="152" />
-      <div class="flex items-center gap-4">
-        <div @mouseenter="isShowDropdownMenu = true">
-          <Button accent="secondary" width="140">
-            <template #leftIcon>
-              <Icon icon="menu" />
+  <header class="header bg-(--main-surface) sticky top-0 z-2">
+    <div class="flex items-center h-18 shadow-(--shadow-default-s)">
+      <Container class="flex items-center gap-10 h-full bg-(--main-surface)">
+        <Logo orientation="horizontal" height="32" width="152" />
+        <div class="flex items-center gap-4">
+          <div @mouseenter="isShowDropdownMenu = true">
+            <Button accent="secondary" width="140">
+              <template #leftIcon>
+                <Icon icon="menu" />
+              </template>
+              Каталог
+            </Button>
+          </div>
+          <Field
+            placeholder="Найти товар"
+            width="375"
+            v-model="model"
+            border-color="--main-secondary"
+          >
+            <template #rightIcon>
+              <Icon icon="search" />
             </template>
-            Каталог
+          </Field>
+        </div>
+        <div class="flex items-center gap-6 flex-auto">
+          <Navigation :data="navItems" />
+          <UserMenu v-if="isAuth" :data="userMenu" />
+          <Button v-else width="157" @click="setIsAuth(true)">
+            Войти
+            <template #rightIcon>
+              <Icon icon="login" />
+            </template>
           </Button>
         </div>
-        <Field
-          placeholder="Найти товар"
-          width="375"
-          v-model="model"
-          border-color="--main-secondary"
-        >
-          <template #rightIcon>
-            <Icon icon="search" />
-          </template>
-        </Field>
-      </div>
-      <div class="flex items-center gap-6 flex-auto">
-        <Navigation :data="navItems" />
-        <UserMenu v-if="isAuth" :data="userMenu" />
-        <Button v-else width="157" @click="setIsAuth(true)">
-          Войти
-          <template #rightIcon>
-            <Icon icon="login" />
-          </template>
-        </Button>
-      </div>
-      <DropdownMenu v-if="isShowDropdownMenu" @mouseleave="isShowDropdownMenu = false" />
-    </Container>
+        <DropdownMenu v-if="isShowDropdownMenu" @mouseleave="isShowDropdownMenu = false" />
+      </Container>
+    </div>
   </header>
 </template>

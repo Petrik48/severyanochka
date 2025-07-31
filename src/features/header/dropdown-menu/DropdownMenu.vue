@@ -8,7 +8,7 @@ const { catalogSections } = catalogStore
 
 <template>
   <div
-    class="absolute left-0 right-0 h-fit bottom-0 flex justify-center py-10 shadow-(--shadow-default-s) animate-slidedown z-[-1]"
+    class="absolute left-0 right-0 h-fit bottom-0 flex justify-center py-10 shadow-(--shadow-default-s) animate-slidedown z-[-1] bg-white"
   >
     <ul class="w-[1208px] grid grid-rows-4 grid-flow-col gap-x-10 gap-y-6">
       <li v-for="section in catalogSections" :key="section.label" class="w-fit">

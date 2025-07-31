@@ -2,15 +2,26 @@
 import { Header } from '../widgets/header'
 import Footer from '@/widgets/footer/Footer.vue'
 import { Content } from '@/shared/content'
-import { Container } from '@/shared/container'
+import { Carousel } from '@/features/main-carousel'
+
+const slides = [
+  {
+    backgroundClass: 'bg-[url(slide-1-bg.png)]',
+    text: 'Доставка бесплатно от 1000 ₽',
+  },
+  {
+    backgroundClass: 'bg-[url(slide-2-bg.png)]',
+    text: '',
+  },
+]
 </script>
 
 <template>
-  <main>
-    <Header />
+  <Header />
+  <main class="mt-4">
     <Content>
-      <Container> Test 1 </Container>
+      <Carousel :slides="slides" />
     </Content>
-    <Footer />
   </main>
+  <Footer />
 </template>
