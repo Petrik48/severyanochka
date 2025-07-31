@@ -5,7 +5,7 @@ on:
       - main
 jobs:
   checkout:
-    runs-on: severyanochka-label
+    runs-on: severyanochka
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -13,19 +13,19 @@ jobs:
         run: npm install
   unit-test:
     needs: [checkout]
-    runs-on: severyanochka-label
+    runs-on: severyanochka
     steps:
       - name: Run unit tests
         run: npm run test:unit
   type-check:
     needs: [unit-test]
-    runs-on: severyanochka-label
+    runs-on: severyanochka
     steps:
       - name: Run type check
         run: npm run type-check
   deploy:
     needs: [type-check]
-    runs-on: severyanochka-label
+    runs-on: severyanochka
     steps:
       - name: Clear cache
         run: docker builder prune -a
