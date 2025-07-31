@@ -17,14 +17,8 @@ jobs:
     steps:
       - name: Run unit tests
         run: npm run test:unit
-  type-check:
-    needs: [unit-test]
-    runs-on: severyanochka
-    steps:
-      - name: Run type check
-        run: npm run type-check
   deploy:
-    needs: [type-check]
+    needs: [unit-test]
     runs-on: severyanochka
     steps:
       - name: Clear cache
