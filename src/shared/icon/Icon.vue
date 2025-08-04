@@ -7,6 +7,7 @@ import FavoriteIcon from '@/shared/icon/icons/FavoriteIcon.vue'
 import OrdersIcon from '@/shared/icon/icons/OrdersIcon.vue'
 import CartIcon from '@/shared/icon/icons/CartIcon.vue'
 import ChevronDownIcon from '@/shared/icon/icons/ChevronDownIcon.vue'
+import ChevronRightIcon from '@/shared/icon/icons/ChevronRightIcon.vue'
 import LoginIcon from '@/shared/icon/icons/LoginIcon.vue'
 import InstaIcon from '@/shared/icon/icons/InstaIcon.vue'
 import VkIcon from '@/shared/icon/icons/VkIcon.vue'
@@ -26,6 +27,7 @@ const icons: { [index: string]: Component } = {
   orders: OrdersIcon,
   cart: CartIcon,
   'chevron-down': ChevronDownIcon,
+  'chevron-right': ChevronRightIcon,
   login: LoginIcon,
   insta: InstaIcon,
   vk: VkIcon,

@@ -24,7 +24,7 @@ const {
 
 <template>
   <button
-    class="flex items-center gap-2 rounded-sm"
+    class="flex items-center gap-2 rounded-sm h-fit"
     :disabled="disabled"
     :class="['button', `button--${size}`, `button--${decoration}`, `button--${accent}`]"
     :style="{ width: width ? `${width}px` : '', height: height ? `${height}px` : '' }"

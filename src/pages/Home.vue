@@ -3,6 +3,9 @@ import { Header } from '../widgets/header'
 import Footer from '@/widgets/footer/Footer.vue'
 import { Content } from '@/shared/content'
 import { Carousel } from '@/features/main-carousel'
+import { Cards } from '@/widgets/cards'
+
+import product1PNG from '@/assets/img/product-1.png'
 
 const slides = [
   {
@@ -14,13 +17,27 @@ const slides = [
     text: '',
   },
 ]
+
+const saleCards = {
+  title: 'Акции',
+  listLinkText: 'Все акции',
+  listLinkUrl: '/',
+  items: [
+    {
+      img: product1PNG,
+      name: 'Г/Ц Блинчики с мясом вес, Россия',
+      sale: 50,
+    },
+  ],
+}
 </script>
 
 <template>
   <Header />
   <main class="mt-4">
     <Content>
-      <Carousel :slides="slides" />
+      <Carousel :slides="slides" class="mb-4" />
+      <Cards :data="saleCards" />
     </Content>
   </main>
   <Footer />
