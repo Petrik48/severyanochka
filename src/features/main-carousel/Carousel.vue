@@ -22,7 +22,7 @@ const { slides } = defineProps<Props>()
       :class="slide.backgroundClass"
     >
       <Container>
-        <div class="carousel__item">
+        <div class="carousel__item cursor-default">
           <Typography tag="h2" bold class="pr-[69px] text-end">
             {{ slide.text }}
           </Typography>

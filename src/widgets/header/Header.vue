@@ -10,7 +10,7 @@ import Navigation from '@/features/header/navigation/Navigation.vue'
 
 import { UserMenu } from '@/features/header/user-menu'
 
-import avatar from '@/assets/avatar.png'
+import avatar from '@/assets/img/avatar.png'
 import { usePersonStore } from '@/entities'
 import { storeToRefs } from 'pinia'
 import { DropdownMenu } from '@/features/header/dropdown-menu'

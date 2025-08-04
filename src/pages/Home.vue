@@ -6,11 +6,11 @@ import { Carousel } from '@/features/main-carousel'
 
 const slides = [
   {
-    backgroundClass: 'bg-[url(slide-1-bg.png)]',
+    backgroundClass: 'bg-[url(@/assets/img/slide-1-bg.png)]',
     text: 'Доставка бесплатно от 1000 ₽',
   },
   {
-    backgroundClass: 'bg-[url(slide-2-bg.png)]',
+    backgroundClass: 'bg-[url(@/assets/img/slide-2-bg.png)]',
     text: '',
   },
 ]
