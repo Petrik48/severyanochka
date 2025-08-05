@@ -1,5 +1,5 @@
 <template>
-  <main class="min-h-[calc(100vh-108px-72px)]">
+  <main>
     <slot></slot>
   </main>
 </template>

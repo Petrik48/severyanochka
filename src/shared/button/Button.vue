@@ -69,6 +69,15 @@ const {
     & p {
       color: var(--main-on-primary);
     }
+
+    &.button--outline {
+      background: transparent;
+      border: 1px solid var(--main-secondary);
+
+      & p {
+        color: var(--main-secondary);
+      }
+    }
   }
 }
 </style>

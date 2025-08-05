@@ -13,7 +13,7 @@ const { title, listLinkText, listLinkUrl, items } = data
 </script>
 
 <template>
-  <Container class="!my-15">
+  <Container class="flex flex-col gap-10 !my-15">
     <div class="flex justify-between">
       <Typography tag="h3" bold>{{ title }}</Typography>
       <Button accent="grayscale" decoration="none" size="m" class="self-end">
@@ -24,7 +24,7 @@ const { title, listLinkText, listLinkUrl, items } = data
       </Button>
     </div>
     <div class="flex gap-10">
-      <ProductCard v-for="(product, index) in items" :key="product.name + index" :product="product">
+      <ProductCard v-for="(product, index) in items" :key="product.name + index" :data="product">
         <template #leftTopIcon>
           <Like />
         </template>
