@@ -33,6 +33,7 @@ const saleCards = {
       cardPrice: 50.5,
       rating: 2,
       sale: 50,
+      count: 0,
     },
     {
       img: product2PNG,
@@ -41,6 +42,7 @@ const saleCards = {
       cardPrice: 50.5,
       rating: 3,
       sale: 50,
+      count: 2,
     },
     {
       img: product3PNG,
@@ -49,6 +51,7 @@ const saleCards = {
       cardPrice: 50.5,
       rating: 5,
       sale: 50,
+      count: 1,
     },
     {
       img: product4PNG,
@@ -57,6 +60,7 @@ const saleCards = {
       cardPrice: 50.5,
       rating: 4,
       sale: 50,
+      count: 0,
     },
   ],
 }

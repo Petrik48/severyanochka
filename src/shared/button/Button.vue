@@ -1,5 +1,8 @@
 <script lang="ts" setup>
+import { computed } from 'vue'
+
 import { Typography } from '@/shared/typography'
+import { Icon } from '@/shared/icon'
 
 interface Props {
   leftIcon?: HTMLElement
@@ -10,6 +13,7 @@ interface Props {
   disabled?: boolean
   height?: number | string
   width?: number | string
+  count?: number
 }
 
 const {
@@ -17,23 +21,53 @@ const {
   decoration = 'default',
   size = 'm',
   disabled = false,
+  count = 0,
   height,
   width,
 } = defineProps<Props>()
+
+const classComputed = computed(() => {
+  return [
+    'button',
+    count ? '!cursor-default' : '',
+    `button--${size}`,
+    `button--${count ? 'default' : decoration}`,
+    `button--${count ? 'secondary' : accent}`,
+  ]
+})
+
+const styleComputed = computed(() => {
+  return { width: width ? `${width}px` : '', height: height ? `${height}px` : '' }
+})
+
+const decreaseCount = () => {
+  console.log('decreaseCount')
+}
+
+const increaseCount = () => {
+  console.log('increaseCount')
+}
 </script>
 
 <template>
   <button
     class="flex items-center gap-2 rounded-sm h-fit"
     :disabled="disabled"
-    :class="['button', `button--${size}`, `button--${decoration}`, `button--${accent}`]"
-    :style="{ width: width ? `${width}px` : '', height: height ? `${height}px` : '' }"
+    :class="classComputed"
+    :style="styleComputed"
   >
-    <slot name="leftIcon" />
-    <Typography tag="p" size="s" class="flex-auto">
-      <slot></slot>
-    </Typography>
-    <slot name="rightIcon" />
+    <span class="flex justify-between w-full" v-if="count">
+      <Icon icon="minus" size="24" class="cursor-pointer" @click.stop="decreaseCount" />
+      {{ count }}
+      <Icon icon="plus" size="24" class="cursor-pointer" @click.stop="increaseCount" />
+    </span>
+    <span v-else class="contents">
+      <slot name="leftIcon" />
+      <Typography tag="p" size="s" class="flex-auto">
+        <slot></slot>
+      </Typography>
+      <slot name="rightIcon" />
+    </span>
   </button>
 </template>
 

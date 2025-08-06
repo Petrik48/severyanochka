@@ -15,6 +15,8 @@ import FbIcon from '@/shared/icon/icons/FbIcon.vue'
 import OkIcon from '@/shared/icon/icons/OkIcon.vue'
 import PhoneIcon from '@/shared/icon/icons/PhoneIcon.vue'
 import RatingIcon from '@/shared/icon/icons/RatingIcon.vue'
+import PlusIcon from '@/shared/icon/icons/PlusIcon.vue'
+import MinusIcon from '@/shared/icon/icons/MinusIcon.vue'
 
 interface Props {
   icon: string
@@ -36,6 +38,8 @@ const icons: { [index: string]: Component } = {
   ok: OkIcon,
   phone: PhoneIcon,
   rating: RatingIcon,
+  plus: PlusIcon,
+  minus: MinusIcon,
 }
 const { icon, size = 24 } = defineProps<Props>()
 const iconComponent = icons[icon]

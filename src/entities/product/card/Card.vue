@@ -11,14 +11,16 @@ interface ProductCardProps {
 }
 
 const { data } = defineProps<ProductCardProps>()
-const { img, name, price, cardPrice, rating } = data
+const { img, name, price, cardPrice, rating, count = 0 } = data
 const isHovered = ref(false)
 
 const buttonProps = computed(() => {
   return isHovered.value
-    ? { accent: 'primary', decoration: 'default' }
-    : { accent: 'secondary', decoration: 'outline' }
+    ? { accent: 'primary', decoration: 'default', count }
+    : { accent: 'secondary', decoration: 'outline', count }
 })
+
+console.log(buttonProps)
 </script>
 
 <template>
